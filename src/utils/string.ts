@@ -1,7 +1,12 @@
 /**
  * Check if string needs quoting in TOON format
+ * @param str String to check
+ * @param delimiter Active delimiter (affects whether commas need quoting)
  */
-export function needsQuoting(str: string): boolean {
+export function needsQuoting(
+  str: string,
+  delimiter: ',' | '\t' | '|' = ','
+): boolean {
   // Empty strings need quotes
   if (str.length === 0) return true;
 
@@ -28,20 +33,34 @@ export function needsQuoting(str: string): boolean {
   // Whitespace-only strings need quotes
   if (/^\s+$/.test(str)) return true;
 
+  // Leading or trailing whitespace needs quotes
+  if (str !== str.trim()) return true;
+
   // Safe string pattern: letters, numbers, underscore, spaces, unicode
-  // If it doesn't match this, it needs quotes
-  return !/^[\w\s\u0080-\uFFFF]+$/.test(str);
+  // When delimiter is not comma, commas are also safe
+  const safePattern =
+    delimiter === ','
+      ? /^[\w\s\u0080-\uFFFF]+$/
+      : /^[\w\s,\u0080-\uFFFF]+$/;
+
+  return !safePattern.test(str);
 }
 
 /**
  * Check if string needs quoting specifically in array context
- * (stricter rules for comma/colon delimiters)
+ * (stricter rules based on active delimiter)
  */
-export function needsQuotingInArray(str: string): boolean {
-  if (needsQuoting(str)) return true;
+export function needsQuotingInArray(
+  str: string,
+  delimiter: ',' | '\t' | '|' = ','
+): boolean {
+  if (needsQuoting(str, delimiter)) return true;
 
-  // In arrays, strings with commas or colons need quotes
-  if (str.includes(',') || str.includes(':')) return true;
+  // Strings containing the active delimiter need quotes
+  if (str.includes(delimiter)) return true;
+
+  // Colons always need quotes in arrays
+  if (str.includes(':')) return true;
 
   return false;
 }
@@ -50,10 +69,35 @@ export function needsQuotingInArray(str: string): boolean {
  * Check if string needs quoting as object key
  */
 export function needsQuotingAsKey(str: string): boolean {
+  // Empty string needs quotes
+  if (str.length === 0) return true;
+
+  // Numeric keys need quotes
+  if (/^\d+$/.test(str)) return true;
+
+  // Keys starting with hyphen need quotes
+  if (str.startsWith('-')) return true;
+
+  // Keys containing hyphens need quotes (ambiguous with paths)
+  if (str.includes('-')) return true;
+
   // Keys with special characters need quotes
-  if (str.includes(':') || str.includes(',') || str.includes(' ')) {
+  if (
+    str.includes(':') ||
+    str.includes(',') ||
+    str.includes(' ') ||
+    str.includes('[') ||
+    str.includes(']') ||
+    str.includes('{') ||
+    str.includes('}') ||
+    str.includes('\n') ||
+    str.includes('\t') ||
+    str.includes('\r') ||
+    str.includes('"')
+  ) {
     return true;
   }
+
   return false;
 }
 
@@ -84,8 +128,14 @@ export function unescapeString(str: string): string {
 /**
  * Quote string if needed for TOON
  */
-export function quoteString(str: string, inArray = false): string {
-  const needs = inArray ? needsQuotingInArray(str) : needsQuoting(str);
+export function quoteString(
+  str: string,
+  inArray = false,
+  delimiter: ',' | '\t' | '|' = ','
+): string {
+  const needs = inArray
+    ? needsQuotingInArray(str, delimiter)
+    : needsQuoting(str, delimiter);
   if (needs) {
     return `"${escapeString(str)}"`;
   }

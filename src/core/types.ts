@@ -19,9 +19,30 @@ export interface EncodeOptions {
    */
   strict?: boolean;
   /**
-   * Indentation string (default: 2 spaces)
+   * Indentation (default: 2)
+   * - number: Number of spaces
+   * - string: Custom indentation string
    */
-  indent?: string;
+  indent?: number | string;
+  /**
+   * Array delimiter (default: comma)
+   * - ',' - Comma delimiter (default)
+   * - '\t' - Tab delimiter
+   * - '|' - Pipe delimiter
+   */
+  delimiter?: ',' | '\t' | '|';
+  /**
+   * Key folding mode (default: none)
+   * - false/undefined: No key folding
+   * - 'safe': Fold single-key chains into dotted paths
+   */
+  keyFolding?: false | 'safe';
+  /**
+   * Maximum depth for key folding (default: Infinity when keyFolding is 'safe')
+   * - 0: No folding
+   * - n: Fold up to n levels
+   */
+  flattenDepth?: number;
 }
 
 /**

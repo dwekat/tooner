@@ -9,7 +9,7 @@ describe('TOON Encoder - Official Fixtures', () => {
     describe(fixture.description, () => {
       for (const test of fixture.tests) {
         it(test.name, () => {
-          const result = encode(test.input as never);
+          const result = encode(test.input as never, test.options as never);
           expect(result).toBe(test.expected);
         });
       }

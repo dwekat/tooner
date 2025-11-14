@@ -7,6 +7,7 @@ export interface TestCase {
   expected: unknown;
   specSection: string;
   note?: string;
+  options?: Record<string, unknown>;
 }
 
 export interface TestFixture {
