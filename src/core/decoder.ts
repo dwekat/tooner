@@ -5,7 +5,7 @@ import { parseString } from '../utils/string.js';
 /**
  * Decode TOON format to value
  */
-export function decode(toon: string, options: DecodeOptions = {}): ToonValue {
+export function decode(toon: string, _options: DecodeOptions = {}): ToonValue {
   const lines = toon.split('\n');
   const result = parseLines(lines, 0);
   return result.value;
@@ -107,7 +107,7 @@ function parseTabular(
 /**
  * Parse comma-separated row
  */
-function parseRow(line: string, expectedCount: number): string[] {
+function parseRow(line: string, _expectedCount: number): string[] {
   const trimmed = line.trim();
   const values: string[] = [];
   let current = '';
