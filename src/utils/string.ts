@@ -139,10 +139,8 @@ export function unescapeString(str: string, lineIndex?: number): string {
       } else {
         // Invalid escape sequence
         if (lineIndex !== undefined) {
-          const { ToonDecodeError } = require('../core/types.js');
-          throw new ToonDecodeError(
-            `Invalid escape sequence: \\${next}`,
-            lineIndex + 1
+          throw new Error(
+            `Invalid escape sequence: \\${next} at line ${lineIndex + 1}`
           );
         }
         // Fallback: keep as is

@@ -9,11 +9,14 @@ describe('TOON Decoder - Official Fixtures', () => {
     describe(fixture.description, () => {
       for (const test of fixture.tests) {
         it(test.name, () => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           if ((test as any).shouldError) {
             expect(() =>
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               decode(test.input as string, test.options as any)
             ).toThrow();
           } else {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const result = decode(test.input as string, test.options as any);
             expect(result).toEqual(test.expected);
           }
