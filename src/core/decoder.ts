@@ -242,7 +242,6 @@ interface ParseResult {
   keyMetadata?: Map<string, boolean>;
 }
 
-
 /**
  * Parse primitive value from string
  */
@@ -721,12 +720,7 @@ function parseListFormat(
         ) {
           const keyResult = parseKey(itemContent);
           if (keyResult) {
-            const parsed = parseTabular(
-              itemContent,
-              lines,
-              lineIndex,
-              options
-            );
+            const parsed = parseTabular(itemContent, lines, lineIndex, options);
             obj[keyResult.key] = parsed.value;
             lineIndex += parsed.linesConsumed;
           } else {
