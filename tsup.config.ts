@@ -28,9 +28,11 @@ export default defineConfig([
     clean: false,
     treeshake: true,
     outDir: 'dist',
-    banner: {
-      js: '#!/usr/bin/env node',
+    shims: true,
+    esbuildOptions(options) {
+      options.banner = {
+        js: '#!/usr/bin/env node',
+      };
     },
   },
 ]);
-
