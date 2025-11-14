@@ -3,6 +3,8 @@
 [![npm version](https://badge.fury.io/js/tooner.svg)](https://www.npmjs.com/package/tooner)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+<a href="https://www.buymeacoffee.com/dwekat" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
 **Token-efficient serialization for LLMs** - Convert JSON/YAML/TOML to TOON format
 
 > ⚠️ **Alpha Release**: This library is under active development. The encoder has basic functionality, but the decoder and many TOON spec features are not yet implemented. Install with `npm install tooner@alpha`
@@ -219,9 +221,3 @@ MIT © 2025
 
 - [TOON Specification](https://github.com/toon-format/spec)
 - [TOON Reference Implementation](https://github.com/toon-format/toon)
-
-## Support
-
-If you find this project helpful, consider supporting its development:
-
-<a href="https://www.buymeacoffee.com/dwekat" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
