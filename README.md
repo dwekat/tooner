@@ -107,7 +107,7 @@ npx tooner decode input.toon -f yaml -o output.yaml
   - Alternative delimiters (comma, tab, pipe)
   - Proper key quoting and escaping
   - Whitespace handling
-- ✅ **Complete TOON Decoder** (358/363 tests passing - 98.6%):
+- ✅ **Complete TOON Decoder** (363/363 tests passing - 100%):
   - Parse TOON indentation structure
   - Parse inline arrays with all delimiters
   - Parse list format with nested objects
@@ -120,11 +120,8 @@ npx tooner decode input.toon -f yaml -o output.yaml
   - Error handling with line numbers
   - Escape sequence handling
 - ✅ Test infrastructure with Vitest
-- ✅ Official TOON test fixtures (358/363 passing)
-
-### 🚧 Known Limitations
-
-- 5 advanced edge cases (expansion conflicts, nested arrays validation) - planned for v0.2.0
+- ✅ Official TOON test fixtures (363/363 passing - 100%)
+- ✅ Security hardened (ReDoS vulnerabilities patched)
 
 ### 📋 TODO
 
