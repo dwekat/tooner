@@ -72,7 +72,8 @@ function expandPaths(
       const parts = key.split('.');
       setNestedValue(result, parts, value, options);
     } else {
-      result[key] = value;
+      // Use setNestedValue for non-dotted keys too for conflict detection
+      setNestedValue(result, [key], value, options);
     }
   }
 
@@ -914,6 +915,22 @@ function parseListFormat(
     );
   }
 
+  // Section: Check for extra items beyond count
+  if (lineIndex < lines.length) {
+    const nextLine = lines[lineIndex];
+    const nextIndent = getIndentLevel(nextLine);
+    const nextContent = nextLine.trim();
+    if (
+      nextIndent === baseIndent &&
+      (nextContent.startsWith('- ') || nextContent === '-')
+    ) {
+      throw new ToonDecodeError(
+        `Array length mismatch: expected ${count}, but found more items`,
+        lineIndex + 1
+      );
+    }
+  }
+
   return {
     value: result,
     linesConsumed: lineIndex - startIndex,
@@ -963,7 +980,7 @@ function parseArray(
     const content = nextLine.trim();
 
     if (content.startsWith('- ') || content === '-') {
-      return parseListFormat(
+      const listResult = parseListFormat(
         lines,
         nextLineIndex,
         count,
@@ -971,6 +988,11 @@ function parseArray(
         options,
         depth
       );
+      // Adjust linesConsumed to include header line
+      return {
+        value: listResult.value,
+        linesConsumed: listResult.linesConsumed + 1,
+      };
     }
   }
 
