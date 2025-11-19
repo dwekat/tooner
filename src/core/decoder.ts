@@ -318,13 +318,13 @@ function parseInlineArray(
   const { key, rest } = keyResult;
 
   // Parse bracket notation [count<delim>]:
-  const bracketMatch = rest.match(/^\[([^\]]+)\]:[ \t]*(.*)$/);
+  const bracketMatch = rest.match(/^\[([^\]]+)\]:(.*)$/);
   if (!bracketMatch) {
     throw new ToonDecodeError('Invalid inline array format', lineIndex);
   }
 
   const bracketContent = bracketMatch[1];
-  const valueStr = bracketMatch[2];
+  const valueStr = bracketMatch[2].trimStart();
   const delimiter = detectDelimiter(bracketContent);
 
   // Parse count
@@ -510,10 +510,10 @@ function parseRootArray(
   depth: number = 0
 ): ParseResult {
   // Section: Handle inline root array [count<delim>]: val,val,val
-  const inlineMatch = header.match(/^\[([^\]]+)\]:[ \t]*(.+)$/);
+  const inlineMatch = header.match(/^\[([^\]]+)\]:(.+)$/);
   if (inlineMatch) {
     const bracketContent = inlineMatch[1];
-    const valueStr = inlineMatch[2];
+    const valueStr = inlineMatch[2].trimStart();
     const delimiter = detectDelimiter(bracketContent);
     const countStr = bracketContent.replace(/[\t|]/g, '');
     const count = parseInt(countStr, 10);
@@ -771,7 +771,7 @@ function parseListFormat(
           const keyResult = parseKey(itemContent);
           if (keyResult) {
             const { key, rest } = keyResult;
-            const colonMatch = rest.match(/^:[ \t]*(.*)$/);
+            const colonMatch = rest.match(/^:(.*)$/);
 
             if (colonMatch) {
               const valueStr = colonMatch[1].trim();
@@ -866,7 +866,7 @@ function parseListFormat(
           if (!nextKeyResult) break;
 
           const { key: nextKey, rest: nextRest } = nextKeyResult;
-          const nextColonMatch = nextRest.match(/^:[ \t]*(.*)$/);
+          const nextColonMatch = nextRest.match(/^:(.*)$/);
           if (!nextColonMatch) break;
 
           const nextValueStr = nextColonMatch[1].trim();
@@ -1119,7 +1119,7 @@ function parseLines(
       }
 
       const { key, rest } = keyResult;
-      const colonMatch = rest.match(/^:[ \t]*(.*)$/);
+      const colonMatch = rest.match(/^:(.*)$/);
       if (!colonMatch) {
         throw new ToonDecodeError(
           'Missing colon in key-value context',
