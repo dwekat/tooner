@@ -17,6 +17,7 @@ coverage/
 # Editor
 .vscode/
 .idea/
+.cursor/
 *.swp
 *.swo
 *~
