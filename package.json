@@ -67,7 +67,10 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit",
-    "prepublishOnly": "pnpm run lint && pnpm run typecheck && pnpm run build"
+    "prepublishOnly": "pnpm run lint && pnpm run typecheck && pnpm run build",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "pnpm run build && changeset publish"
   },
   "keywords": [
     "toon",
@@ -91,6 +94,7 @@
   },
   "homepage": "https://github.com/mdwekat/tooner#readme",
   "devDependencies": {
+    "@changesets/cli": "^2.29.7",
     "@types/node": "^20.19.25",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
