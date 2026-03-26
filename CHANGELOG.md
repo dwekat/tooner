@@ -1,5 +1,11 @@
 # tooner
 
+## 0.1.5
+
+### Patch Changes
+
+- Upgrade devDependencies: @types/node to v25, eslint to v10, vitest to v4.1
+
 ## 0.1.4
 
 ### Patch Changes
