@@ -68,7 +68,8 @@
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "pnpm run lint && pnpm run typecheck && pnpm run build",
-    "version": "pnpm changeset version",
+    "changeset": "changeset",
+    "version": "changeset version && pnpm install --lockfile-only",
     "release": "pnpm run build && changeset publish"
   },
   "keywords": [

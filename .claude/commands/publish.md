@@ -14,7 +14,7 @@ Release tooner as a $ARGUMENTS version bump. Publishing is handled by the
 1. Verify clean git state: `git status` must show no uncommitted changes
 2. Verify tests pass: `pnpm test`
 3. Create changeset: `pnpm changeset` — select "$ARGUMENTS" as the bump type
-4. Version bump: `pnpm run version`
+4. Version bump: `pnpm run version` (bumps package.json, writes CHANGELOG, syncs lockfile)
 5. Commit version changes: `git add -A && git commit -m "chore: release v$(node -p "require('./package.json').version")"`
 6. Tag the release: `git tag "v$(node -p "require('./package.json').version")"`
 7. Push commit and tag: `git push origin main --follow-tags`
