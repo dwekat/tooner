@@ -1,6 +1,6 @@
 {
   "name": "tooner",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Token-efficient serialization for LLMs - Convert JSON/YAML/TOML to TOON format",
   "type": "module",
   "exports": {

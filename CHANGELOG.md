@@ -1,5 +1,15 @@
 # tooner
 
+## 0.2.0
+
+### Minor Changes
+
+- Raise minimum Node.js to 22.12 (required by commander 15).
+
+  Runtime: commander 14 -> 15, yaml 2.9. Dev tooling: eslint, typescript-eslint,
+  vitest, tsx, prettier; declare @eslint/js. Add a tag-triggered GitHub Actions
+  workflow that publishes to npm with provenance.
+
 ## 0.1.5
 
 ### Patch Changes
