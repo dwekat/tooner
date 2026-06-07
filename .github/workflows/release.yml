@@ -32,14 +32,14 @@ jobs:
       - name: Lint
         run: pnpm run lint
 
+      - name: Build
+        run: pnpm run build # must precede typecheck: cli imports built dist/*
+
       - name: Typecheck
         run: pnpm run typecheck
 
       - name: Test
         run: pnpm test
-
-      - name: Build
-        run: pnpm run build
 
       - name: Resolve version from tag
         id: version
