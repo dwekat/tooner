@@ -17,7 +17,7 @@ coverage/
 # Editor
 .vscode/
 .idea/
-.cursor/
+.claude/settings.local.json
 *.swp
 *.swo
 *~
