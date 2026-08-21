@@ -1,5 +1,11 @@
 # tooner
 
+## 0.2.1
+
+### Patch Changes
+
+- Dependency maintenance: refresh dev toolchain and pin transitive security overrides.
+
 ## 0.2.0
 
 ### Minor Changes
