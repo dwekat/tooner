@@ -39,3 +39,6 @@ tmp/
 temp/
 *.tmp
 
+
+# pnpm is the package manager here; an npm lockfile only drifts and trips Dependabot
+package-lock.json
