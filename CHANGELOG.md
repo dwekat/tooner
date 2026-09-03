@@ -1,5 +1,11 @@
 # tooner
 
+## 0.2.2
+
+### Patch Changes
+
+- Update development toolchain dependencies (@types/node, @typescript-eslint, eslint, tsx). No runtime dependency or public API change.
+
 ## 0.2.1
 
 ### Patch Changes
