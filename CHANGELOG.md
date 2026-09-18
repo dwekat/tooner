@@ -1,5 +1,11 @@
 # tooner
 
+## 0.2.3
+
+### Patch Changes
+
+- Bump dependencies: runtime `yaml` to 2.9.1, dev toolchain to vitest 5 and @changesets/cli 3. Security overrides (glob, vite, esbuild) moved from `package.json` to `pnpm-workspace.yaml`, where pnpm 10+ actually reads them.
+
 ## 0.2.2
 
 ### Patch Changes
