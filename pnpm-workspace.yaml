@@ -1,0 +1,10 @@
+# pnpm >=10 reads settings from here; the `pnpm` field in package.json is ignored.
+overrides:
+  'glob@>=10.2.0 <10.5.0': '>=10.5.0'
+  'vite@>=7.0.0 <7.3.5': '^7.3.5'
+  'esbuild@>=0.27.3 <0.28.1': '^0.28.1'
+
+# pnpm >=10 blocks lifecycle scripts by default; esbuild needs its postinstall
+# to place the platform binary.
+allowBuilds:
+  esbuild: true
