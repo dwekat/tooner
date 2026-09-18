@@ -1,5 +1,11 @@
 # tooner
 
+## 0.2.4
+
+### Patch Changes
+
+- Re-release of 0.2.3: that version was tagged but never reached the npm registry because the release workflow published via `pnpm publish`, which reported success without publishing. Contents are identical to 0.2.3 plus the workflow fix.
+
 ## 0.2.3
 
 ### Patch Changes
