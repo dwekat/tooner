@@ -59,7 +59,7 @@ jobs:
           if npm view "tooner@${{ steps.version.outputs.version }}" version >/dev/null 2>&1; then
             echo "npm: tooner@${{ steps.version.outputs.version }} already published, skipping"
           else
-            pnpm publish --provenance --no-git-checks --ignore-scripts
+            npm publish --provenance --access public
           fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
