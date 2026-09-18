@@ -4,7 +4,9 @@
 
 ### Patch Changes
 
-- Re-release of 0.2.3: that version was tagged but never reached the npm registry because the release workflow published via `pnpm publish`, which reported success without publishing. Contents are identical to 0.2.3 plus the workflow fix.
+- Switch the release workflow to `npm publish --provenance --access public`. No consumer-facing change: contents are identical to 0.2.3.
+
+  Correction: 0.2.3 was briefly believed not to have published, because the registry was checked ~2 minutes after the run and had not caught up yet. It did publish. `pnpm publish` was working; this change is a preference for the same CLI the other packages use, not a fix.
 
 ## 0.2.3
 
