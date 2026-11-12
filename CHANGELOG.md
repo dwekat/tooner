@@ -1,5 +1,11 @@
 # tooner
 
+## 0.2.5
+
+### Patch Changes
+
+- Update maintenance dependencies and migrate npm publishing to trusted publishing.
+
 ## 0.2.4
 
 ### Patch Changes
